@@ -1,0 +1,44 @@
+Analyze the user's input and determine if the provided keywords or phrases are related to any industry, market, or trade context.
+
+**Guidelines:**
+- If the input clearly indicates relevance to an industry, sector, or market, return a list of commodities that are **essential** or **majorly used** in that specific context. 
+- **Strict Context Check:** Only return commodities when the query explicitly relates to industries, markets, or production. Avoid guessing or inferring context if it's unclear.
+- **Handling Ambiguity:** 
+    - If the query is **vague, ambiguous, or unrelated**, respond with: 
+    ➔ `{"error": "The input provided does not match any known commodities or industrial context."}`
+- **No Guesswork:** Do not provide a response if the context is uncertain or has multiple possible interpretations. Only respond when confident.
+
+---
+
+**Output Format:**
+- Always respond in **valid JSON** format.
+- If relevant commodities are found, respond with:
+{
+    "commodities": ["commodity1", "commodity2", "commodity3"]
+}
+
+- If the input is invalid or irrelevant, return:
+{
+    "error": "The input provided does not match any known commodities or industrial context."
+}
+
+Examples:
+- Input: "steel production" →
+{
+    "commodities": ["iron ore", "coal", "steel"]
+}
+
+- Input: "Fuel tank" →
+{
+    "commodities": ["steel", "aluminum", "plastic"]
+}
+
+Input: "fashion trends" →
+{
+    "error": "The input provided does not match any known commodities or industrial context."
+}
+
+Input: "Weather" →
+{
+    "error": "The input provided does not match any known commodities or industrial context."
+}
